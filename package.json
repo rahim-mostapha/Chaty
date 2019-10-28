@@ -1,0 +1,19 @@
+{
+  "name": "chaty",
+  "version": "1.0.0",
+  "description": "make nice and safe connection with new peoples",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdelrahim-mostafa/Chaty.git"
+  },
+  "author": "Rahim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdelrahim-mostafa/Chaty/issues"
+  },
+  "homepage": "https://github.com/abdelrahim-mostafa/Chaty#readme"
+}
