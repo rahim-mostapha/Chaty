@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const chat = require('./controller/socket.io.controller').default;
 const app = express();
 
 // database connection
@@ -32,8 +33,9 @@ DB.once('open' , () => {
     // set message controller
     app.use('/message' , require('./controller/message.controller'));
 
-    app.listen(port , (error) => {
+    let server = app.listen(port , (error) => {
         if(error) console.error(`app listen error : ${error}`);
         else console.log(`check --> http://localhost:${port}`);
     });
+    chat(server);
 });
