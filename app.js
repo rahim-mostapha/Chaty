@@ -30,7 +30,7 @@ DB.once('open' , () => {
     // set user controller
     app.use('/user' , require('./controller/user.controller'));
     // set message controller
-    app.use('/user' , require('./controller/message.controller'));
+    app.use('/message' , require('./controller/message.controller'));
 
     app.listen(port , (error) => {
         if(error) console.error(`app listen error : ${error}`);

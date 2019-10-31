@@ -32,7 +32,7 @@ router.post('/login' , ( req, res ) => {
                             data = data.toObject();
                             delete data['password'];
                             delete data['__v'];
-                            let status = await changeActiveStatus(data._id ,{active : true , deleted : false});
+                            await changeActiveStatus(data._id ,{active : true , deleted : false});
                             data['active'] = true;
                             data['deleted'] = false;
                             res.json({status : 'done', data , token});
@@ -84,7 +84,7 @@ router.post('/update' , verifyToken , ( req, res ) => {
 
 // upload file like images anf pdf , act..
 router.post('/uploadFile' , verifyToken , ( req, res ) => {
-    fileUploader(req , res , (err) => {
+    fileUploader(req , res , async (err) => {
         // check for uploading errors
         if(err) {
             console.log(`uploading error : ${err}`);
