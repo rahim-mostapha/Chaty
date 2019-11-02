@@ -1,0 +1,24 @@
+.formStyle{
+    margin: 20px auto;
+}
+@media (min-width:768px){
+    .formStyle{
+        width: 70%;
+    }
+}
+.formStyle .head{
+    color: #000;
+    background-color: #05484238;
+    text-align: center;
+    padding: 2px 0;
+}
+.formStyle .head h2 {
+    font-weight: bold;
+}
+.formStyle .head h2 span{
+    font-size: 23px
+}
+.formStyle .body{
+    padding: 28px 15px;
+    background-color: #ffffff9c;
+}

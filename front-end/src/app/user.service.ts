@@ -4,8 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 
-// import * as jwt from 'jsonwebtoken';
-
 @Injectable({
   providedIn: 'root'
 })

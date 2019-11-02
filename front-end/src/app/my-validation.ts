@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup , AbstractControl } from '@angular/forms';
 
 export class MyValidation {
     private static errors : Object = {
@@ -28,5 +28,14 @@ export class MyValidation {
           }
         });
         return signupFormErrors;
+    }
+
+    static email(controll : AbstractControl ) : {[key : string] : Boolean} | null{
+      let res = /[a-zA-Z0-9_\.\-]+\@[a-zA-Z0-9_\-]{3,9}\.[a-zA-Z0-9_\-]{3,6}/.test(controll.value);
+      if(res){
+        return null
+      } else {
+        return {'email' : true}
+      }
     }
 }
