@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="search-view">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control" #userName placeholder="Amount">
+            <div (click)="getUsers(userName)" class="input-group-addon">Search</div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="users row">
+        <div class="col-md-4 col-sm-6 col-xs-12 user-continer" *ngFor="let user of users">
+            <div class="user-data" (click)="openChat(user._id)">
+                <img [src]="'http://localhost:3000/images/'+user.cover" class="cover" alt="{{user.firstname}} cover" title="{{user.firstname}} cover">
+                <div class="over-ele">
+                    <img [src]="'http://localhost:3000/images/'+user.profile" class="profile" alt="{{user.firstname}} profile"  title="{{user.firstname}} profile">
+                    <span class="name">{{user.firstname + " " + user.lastname}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

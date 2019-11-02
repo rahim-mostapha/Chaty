@@ -1,5 +1,5 @@
 .navbar{
-    background-color: #a6a3a35e;
+    background-color: #e98074;
     border-radius: 0;
     border: none;
 }
@@ -22,7 +22,8 @@
     color: #3F51B5;
 }
 .navbar .collapse a {
-    color: #3b3b3b;
+    color: black;
+    text-shadow: 0px 0px 0.4px #000000;
     text-decoration: none;
     cursor: pointer;
     transition: ease-in-out 300ms;
@@ -35,4 +36,13 @@
     color: #fffdfd;
     background-color: #00000071;
     font-weight: bold;
+}
+.navbar-default .navbar-toggle {
+    border-color: #ba5247;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: #ba5247;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fffcfc;
 }
