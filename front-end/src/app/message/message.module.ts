@@ -7,20 +7,26 @@ import { NewMessageComponent } from './new-message/new-message.component';
 import { RequestComponent } from './request/request.component';
 import { FriendComponent } from './friend/friend.component';
 import { MessageRoutingModule } from './message-routing.module';
+import { ChatComponent } from './chat/chat.component';
 
+import { RequestService } from './request.service';
 
 
 @NgModule({
   declarations: [
     NewMessageComponent,
     RequestComponent,
-    FriendComponent
+    FriendComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule ,
     MessageRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+  ],
+  providers: [
+    RequestService
   ]
 })
 export class MessageModule { }
