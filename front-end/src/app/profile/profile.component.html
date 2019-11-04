@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<p>{{userInfoInfo | json}}</p>
+
+<div class="row">
+    <div class="col-xs-12 userInfo-continer">
+        <div class="userInfo-data">
+            <div class="cover"  (mouseenter)="togglecoverOption()" (mouseleave)="togglecoverOption()">
+                <img [src]="'http://localhost:3000/images/'+userInfo.cover" alt="{{userInfo.firstname}} cover" title="{{userInfo.firstname}} cover">
+                <div class="controll" *ngIf="cover">
+                    <input type="file" (change)="coverChange($event)" id="coverImage">
+                    <button class="btn btn-success" *ngIf="data?.has('cover')" (click)="uploadFile()">Upload</button>
+                    <label class="glyphicon glyphicon-camera" for="coverImage"></label>
+                </div>
+            </div>
+            <div class="over-ele">
+                <div class="profile col-xs-12 col-sm-4 col-md-3" (mouseenter)="toggleProfileOption()" (mouseleave)="toggleProfileOption()">
+                    <img [src]="'http://localhost:3000/images/'+userInfo.profile" alt="{{userInfo.firstname}} profile"  title="{{userInfo.firstname}} profile">
+                    <div class="controll" *ngIf="profile">
+                        <input type="file" (change)="profileChange($event)" id="profileImage">
+                        <button class="btn btn-success" *ngIf="data?.has('profile')" (click)="uploadFile()">Upload</button>
+                        <label class="glyphicon glyphicon-camera" for="profileImage"></label>
+                    </div>
+                </div>
+                <span class="data col-xs-12 col-sm-8 col-md-9">
+                    <p class="name">{{userInfo.firstname + " " + userInfo.lastname}}</p>
+                    <p class="email">
+                        {{userInfo.email}}
+                    </p>
+                    <p class="date">
+                        You are here since {{userInfo.date | date:'dd-MM-yyyy hh:mm:ss a' }}
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<app-signup></app-signup>

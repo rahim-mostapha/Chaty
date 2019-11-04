@@ -46,3 +46,13 @@
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fffcfc;
 }
+.profile-cont{
+    padding: 2px;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 3px;
+}
+.profile-cont .profile{
+    width: 40px;
+    border-radius: 50%;
+}

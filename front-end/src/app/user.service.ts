@@ -20,16 +20,37 @@ export class UserService {
       })
     }).pipe(catchError(this.responsError));
   }
+
   getUserData() : Observable<Object>{
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/user/verifyAndGetData`, {
+    return this.http.get<Object>(`http://localhost:3000/user/info`, {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
       })
     }).pipe(catchError(this.responsError));
   }
-
+  
+  uploadFile(data) : Observable<Object>{
+    let token = this.jwt.getToken();
+    return this.http.post<Object>(`http://localhost:3000/user/uploadFile`, data , {
+      reportProgress : true ,
+      observe : 'events',
+      headers : new HttpHeaders({
+        'Authorization' : `Bearer ${token}`
+      })
+    }).pipe(catchError(this.responsError));
+  }
+  
+  searchForUser(name: string) : Observable<Object>{
+    let token = this.jwt.getToken();
+    return this.http.get<Object>(`http://localhost:3000/user/search/${name}`, {
+      headers : new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${token}`
+      })
+    }).pipe(catchError(this.responsError));
+  }
   responsError(error : HttpErrorResponse){
     if(error instanceof ErrorEvent){
       /// A client-side or network error occurred. Handle it accordingly.

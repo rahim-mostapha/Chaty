@@ -18,8 +18,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="urlS">
         <ul class="nav navbar-nav">
+          <li><a routerLink="/profile" class="profile-cont" *ngIf="isloggedIn" routerLinkActive="active"><img [src]="'http://localhost:3000/images/'+userInfo.profile" class="profile" alt="{{userInfo.firstname}} profile"  title="{{userInfo.firstname}} profile"> </a></li>
           <li><a routerLink="/home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a></li>
-          <li><a routerLink="/profile" *ngIf="isloggedIn" routerLinkActive="active">Profile </a></li>
           <li><a routerLink="/message/friends" *ngIf="isloggedIn" routerLinkActive="active">Friends </a></li>
           <li><a routerLink="/message/new" *ngIf="isloggedIn" routerLinkActive="active">New Message </a></li>
           <li><a routerLink="/message/request" *ngIf="isloggedIn" routerLinkActive="active">Request </a></li>

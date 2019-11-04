@@ -1,0 +1,90 @@
+.userInfo-data{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 225px;
+}
+.userInfo-data .cover{
+    width: 100%;
+    position: absolute;
+}
+.userInfo-data .cover img{
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+.userInfo-data .over-ele{
+    width: 100%;
+    position: relative;
+}
+.userInfo-data .over-ele .profile img{
+    border-radius: 50%;
+    width: 100%;
+    margin: 4px;
+    height: 210px;
+}
+.userInfo-data .over-ele .data{
+    padding-left: 36px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.userInfo-data .over-ele .data{
+    padding-left: 36px;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 60px;
+}
+.userInfo-data .over-ele .data .email ,.userInfo-data .over-ele .data .date{
+    padding-left: 36px;
+    font-size: 14px;
+    font-weight: 100;
+}
+@media (max-width:767px){
+    .userInfo-data{
+        min-height: 250px;
+    }
+    .userInfo-data .cover img{
+        min-height: 250px;
+    }
+    .userInfo-data .over-ele .profile{
+        text-align: center;
+    }
+    .userInfo-data .over-ele .profile img{
+        width: 15%;
+        height: 80px;
+    }
+    .userInfo-data .over-ele .data{
+        padding-top: 0;
+        text-align: center;
+    }
+}
+[type="file"]{
+    display: none;
+}
+ .cover .controll{
+    position: absolute;
+    right: 13px;
+    top: 172px;
+}
+.glyphicon-camera{
+    font-size: 40px;
+    padding: 1px 18px;
+    background-color: #00000045;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ .profile .glyphicon-camera{
+    font-size: 40px;
+    padding: 1px 18px;
+    background-color: #00000045;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ .profile .controll{
+    position: relative;
+    top: -30px;
+}
+.profile .controll button ,  .cover .controll button{
+    float: left;
+    margin: 5px;
+}

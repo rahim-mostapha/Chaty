@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private jwt : JwtService , private router : Router) { }
 
   isloggedIn : boolean = false;
+  userInfo  = JSON.parse(localStorage.getItem('userInfo'));
 
   ngOnInit() {
     this.isloggedIn = !this.jwt.isTokenExpire();

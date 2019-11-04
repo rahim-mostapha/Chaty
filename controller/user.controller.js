@@ -65,7 +65,8 @@ router.post('/signup' , ( req, res ) => {
 //update user info 
 router.post('/update' , verifyToken , ( req, res ) => {
     // encrypt password if exist
-    if(req.body.password){
+    console.log(req.body);
+    if(req.body.password && req.body.password !== ''){
         let salt = bcrypt.genSaltSync(10);
         req.body.password = bcrypt.hashSync(req.body.password , salt);
     }
@@ -94,7 +95,7 @@ router.post('/uploadFile' , verifyToken , ( req, res ) => {
             let file = req.files[0];
             let active = await changeActiveStatus(req.auth ,{[file.fieldname] : file.filename});
             if(active){
-                res.json({status : 'done'});
+                res.json({status : 'done' , data : {field :file.fieldname , name :file.filename}});
             } else {
                 res.json({status : 'error' , error : 'please try again'});
             }
@@ -118,10 +119,10 @@ router.get('/info' , verifyToken , ( req, res ) => {
 });
 
 // return users data depend on name
-router.get('/search/:name' , verifyToken , ( req, res ) => {
+router.get('/search/:name' , ( req, res ) => {
     let name = new RegExp(`.*${req.params.name}.*` , 'g');
     // request data from database
-    User.find({ "$or" : [ {firstname : name} , {lastname : name} ] }, (err , data) => {
+    User.find({ "$or" : [ {firstname : name} , {lastname : name} , {email : name} ] , deleted : false}, {password : 0}, (err , data) => {
         if(err) {
             // if some thing wronge this will be work
             console.log(`updating error : ${err}`);
