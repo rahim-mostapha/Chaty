@@ -1,1 +1,20 @@
-<p>friend works!</p>
+<div *ngIf="friends">
+    <div class="users row">
+        <div class="head">
+            You have {{friends.length}} friend(s)
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 user-continer" *ngFor="let friend of friends">
+            <div class="user-data" (click)="openChat(friend._id)">
+                <img [src]="'http://localhost:3000/images/'+friend.cover" class="cover" alt="{{friend.firstname}} cover" title="{{friend.firstname}} cover">
+                <div class="over-ele">
+                    <span class="user-activ" *ngIf="friend.active"></span>
+                    <img [src]="'http://localhost:3000/images/'+friend.profile" class="profile" alt="{{friend.firstname}} profile"  title="{{friend.firstname}} profile">
+                    <span class="name">{{friend.firstname + " " + friend.lastname}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="no-requests" *ngIf="!friends">
+    You have no friends
+</div>
