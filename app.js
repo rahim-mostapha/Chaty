@@ -32,6 +32,10 @@ DB.once('open' , () => {
     app.use('/user' , require('./controller/user.controller'));
     // set message controller
     app.use('/message' , require('./controller/message.controller'));
+    // set request controller
+    app.use('/request' , require('./controller/request.controller'));
+    // set room controller
+    app.use('/room' , require('./controller/room.controller'));
 
     let server = app.listen(port , (error) => {
         if(error) console.error(`app listen error : ${error}`);

@@ -65,7 +65,6 @@ router.post('/signup' , ( req, res ) => {
 //update user info 
 router.post('/update' , verifyToken , ( req, res ) => {
     // encrypt password if exist
-    console.log(req.body);
     if(req.body.password && req.body.password !== ''){
         let salt = bcrypt.genSaltSync(10);
         req.body.password = bcrypt.hashSync(req.body.password , salt);

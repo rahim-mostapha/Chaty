@@ -4,7 +4,7 @@
             You have {{friends.length}} friend(s)
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12 user-continer" *ngFor="let friend of friends">
-            <div class="user-data" (click)="openChat(friend._id)">
+            <div class="user-data" *ngIf="friend" (click)="openChat(friend._id)">
                 <img [src]="'http://localhost:3000/images/'+friend.cover" class="cover" alt="{{friend.firstname}} cover" title="{{friend.firstname}} cover">
                 <div class="over-ele">
                     <span class="user-activ" *ngIf="friend.active"></span>

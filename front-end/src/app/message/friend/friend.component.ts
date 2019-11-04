@@ -25,7 +25,6 @@ export class FriendComponent implements OnInit {
               this.friends[i] = item['users'].filter(ele => ele['_id'] != this.userInfo['_id'])[0];
             } )
           }
-          console.log(this.friends);
         } else {
           this.flashMessage.show(`${res['status']} : ${res['error']}` , {cssClass : 'alert-danger'});
         }
