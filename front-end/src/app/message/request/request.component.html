@@ -1,1 +1,25 @@
-<p>request works!</p>
+<div *ngIf="requests">
+    <div class="users row">
+        <div class="head">
+            You have {{requests.length}} request(s)
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 user-continer" *ngFor="let request of requests">
+            <div class="user-data">
+                <img [src]="'http://localhost:3000/images/'+request.from?.cover" class="cover" alt="{{request.from?.firstname}} cover" title="{{request.from?.firstname}} cover">
+                <div class="over-ele">
+                    <img [src]="'http://localhost:3000/images/'+request.from?.profile" class="profile" alt="{{request.from?.firstname}} profile"  title="{{request.from?.firstname}} profile">
+                    <div class="name">
+                        {{request.from?.firstname + " " + request.from?.lastname}}
+                        <div class="controll">
+                            <button class="btn btn-success" (click)="acceptRequest(request._id , request.from._id)" >Accept</button>
+                            <button class="btn btn-danger" (click)="rejectRequest(request._id)" >Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="no-requests" *ngIf="!requests">
+    You have no requests
+</div>

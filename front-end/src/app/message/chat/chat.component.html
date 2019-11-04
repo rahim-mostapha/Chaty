@@ -1,1 +1,45 @@
-<p>chat works!</p>
+<!-- <p>{{roomInfo | json}}</p> -->
+<div class="no-chat" *ngIf="!roomInfo">
+    <p class="message"> He is not friend of you</p>
+    <div class="send-request row" *ngIf="!requestInfo">
+        <span class="min-message col-xs-12"> You can send friendship request</span>
+        <div class="col-xs-12 text-center">
+            <button class="btn-lg btn btn-success" (click)="sendRequest()" >Send Request</button>
+        </div>
+    </div>  
+    <div class="send-request row" *ngIf="requestInfo && requestInfo.from?._id === userInfo?._id">
+        <div *ngIf="requestInfo.status === 1">
+            <span class="min-message col-xs-12">
+                You send friendship request to 
+                <span class="bold-text">{{ requestInfo.to?.firstname }}</span>
+                <br>
+                in {{ requestInfo.date | date:'dd-MM-yyyy hh:mm:ss a' }}
+            </span>
+            <div class="col-xs-12 text-center">
+                <button class="btn-lg btn btn-danger" (click)="deleteRequest()" >Delete Request</button>
+            </div>
+        </div>
+        <div *ngIf="requestInfo.status === 0">
+            <span class="min-message col-xs-12"> 
+                <span class="bold-text">{{ requestInfo.to?.firstname | titlecase }} </span>
+                reject Your friendship request
+            </span>
+            <div class="col-xs-12 text-center">
+                <button class="btn-lg btn btn-success" (click)="sendRequest()" >Resend Request</button>
+            </div>
+        </div>
+    </div>  
+    <div class="send-request row" *ngIf="requestInfo && requestInfo.from?._id !== userInfo?._id">
+        <span class="min-message col-xs-12"> 
+            <span class="bold-text">{{ requestInfo.from?.firstname | titlecase }}</span>
+            send friendship request to you
+        </span>
+        <div class="col-xs-12 text-center">
+            <button class="btn-lg btn btn-success" (click)="acceptRequest()" >Accept Request</button>
+            <button class="btn-lg btn btn-danger" (click)="rejectRequest()" >Reject Request</button>
+        </div>
+    </div>  
+</div>
+
+<button class="btn-lg btn btn-danger" (click)="showRequest()" >Reject Request</button>
+

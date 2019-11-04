@@ -10,6 +10,7 @@ import { MessageRoutingModule } from './message-routing.module';
 import { ChatComponent } from './chat/chat.component';
 
 import { RequestService } from './request.service';
+import { RoomsService } from './rooms.service';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RequestService } from './request.service';
     HttpClientModule,
   ],
   providers: [
-    RequestService
+    RequestService ,
+    RoomsService
   ]
 })
 export class MessageModule { }

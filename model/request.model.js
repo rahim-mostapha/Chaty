@@ -13,6 +13,14 @@ const requestSchema = mongoose.Schema({
         type : Date ,
         default : Date.now()
     } ,
+    deleted : {
+        type : Boolean ,
+        default :false
+    } ,
+    status : {
+        type : Number ,
+        default : 1
+    }
 });
 
 let Request = mongoose.model('Request' , requestSchema);
