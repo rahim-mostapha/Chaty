@@ -19,7 +19,6 @@ export class RequestComponent implements OnInit {
       res => {
         if(res['status'] === 'done'){
           if(res['data'].length > 0)this.requests = res['data'];
-          console.log(this.requests);
         } else {
           this.flashMessage.show(`${res['status']} : ${res['error']}` , {cssClass : 'alert-danger'});
         }

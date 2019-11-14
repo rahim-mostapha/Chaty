@@ -41,5 +41,115 @@
     </div>  
 </div>
 
+<div class="chat-view" *ngIf="roomInfo">
+    <div class="chat col-xs-12">
+        <div class="chat-info">
+            <div class="group-room" *ngIf="roomInfo.group">
+
+            </div>
+            <div class="friend-room" *ngIf="!roomInfo.group">
+                <div class="profile">
+                    <img [src]="'http://localhost:3000/images/'+roomInfo.users[0]?.profile" alt="{{roomInfo.users[0]?.firstname}} profile" title="{{roomInfo.users[0]?.firstname}} profile">
+                    <span *ngIf="roomInfo.users[0]?.active" class="active-user"></span>
+                </div>
+                <span class="name"> {{ roomInfo.users[0]?.firstname + ' ' + roomInfo.users[0]?.lastname }} </span>
+            </div>
+        </div>
+
+        <ul #messagesContainer class="messages">
+            <li class="message" *ngFor="let message of messages">
+                <div [class.my-message]="message.sender === userInfo._id">
+                    <img *ngIf="message.sender !== userInfo._id" [src]="'http://localhost:3000/images/'+roomInfo.users[0]?.profile">
+                    <img *ngIf="message.sender === userInfo._id" [src]="'http://localhost:3000/images/'+userInfo.profile">
+                    <span *ngIf="!message.deleted && message.type === 'text'" class="msg">
+                        <span class="message-content">
+                            {{message.message}}
+                        </span>
+                    </span>
+                    <span *ngIf="!message.deleted && message.type === 'image'" class="image-container">
+                        <img [src]="'http://localhost:3000'+message.message">
+                    </span>
+                    <span *ngIf="!message.deleted && message.type === 'video'" class="image-container">
+                        <video controls [src]="'http://localhost:3000'+message.message" ></video>
+                    </span>
+                    <span *ngIf="!message.deleted && message.type === 'file'" class="sending-file">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                        <a [href]="'http://localhost:3000'+message.message" target="_blank" download> {{ message.message }} </a>
+                    </span>
+                    <audio *ngIf="!message.deleted && message.type === 'audio'" [src]="'http://localhost:3000'+message.message" controls></audio>
+                    <!-- <span class="message-content">
+                        {{message.message}}
+                    </span> -->
+                    <span *ngIf="message.deleted" class="deleted-message">
+                        This message deleted by sender
+                    </span>
+                    <span *ngIf="message.sender === userInfo._id && !message.deleted" class="glyphicon glyphicon-remove message-remove" (click)="deleteMessag(message._id)"></span>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li class="message" *ngFor="let typer of userTyping">
+                <img [src]="'http://localhost:3000/images/'+typer.profile">
+                <span class="msg">
+                    <span class="message-content typing">
+                        <span class="ball1"></span>
+                        <span class="ball2"></span>
+                        <span class="ball3"></span>
+                        <span class="ball4"></span>
+                    </span>
+                </span>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        
+        <div class="message-options">
+            <span class="emoji-toggle" *ngIf="messageType === 'text'" (click)="emojiToggle()">
+                <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24m0 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20M8 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4m8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-.8 8c-.7 1.2-1.8 2-3.3 2-1.5 0-2.7-.8-3.4-2H15m3-2H6a6 6 0 1 0 12 0"></path></svg>
+            </span>
+            
+            <div class="message-value">
+                <textarea id="message" *ngIf="messageType === 'text'" (focus)="onType()" (blur)="endType()" [(ngModel)]="messageContent" placeholder="Message ..."></textarea>
+                <img *ngIf="messageType === 'image'" class="sending-image" [src]="fileViewer" >
+                <video autoplay loop *ngIf="messageType === 'video'" class="sending-image" [src]="fileViewer" ></video>
+                <span *ngIf="messageType === 'file'" class="sending-file">
+                    <span class="glyphicon glyphicon-file"></span>
+                    {{ fileViewer }} 
+                </span>
+                <span *ngIf="messageType === 'audio'" class="sending-audio">
+                    <audio #recorder [src]="sanitize(fileViewer)" controls></audio>
+                    <span class="glyphicon glyphicon-stop" (click)="stopRecorder()"></span>
+                </span>
+                <span *ngIf="messageType !== 'text'" class="cancel_it" (click)="resetMessage()" >X</span>
+            </div>
+            
+            <div class="all-options">
+                <span class="option glyphicon glyphicon-send" title="send" (click)="sendMessage(messageElements)"></span>
+                
+                <i class="option fa fa-microphone" (click)="startRecord()" title="record"></i>
+                
+                <label for="video-upload">
+                    <span class="option glyphicon glyphicon-facetime-video" title="video"></span>
+                </label>
+                <input type="file" (change)="fileUploader($event,'video')" id="video-upload" accept="video/*">
+                
+                <label for="image-upload">
+                    <span class="option glyphicon glyphicon-picture" title="image"></span>
+                </label>
+                <input type="file" (change)="fileUploader($event,'image')" id="image-upload" accept="image/*">
+                
+                <label for="file-upload">
+                    <span class="option glyphicon glyphicon-paperclip" title="file"></span>
+                </label>
+                <input type="file" (change)="fileUploader($event,'file')" id="file-upload" accept=".pdf,.xls,.xlsx,.docx,.zip,.rar,.pdf,.json,.txt,.html,.css,.js,.ts">
+            </div>
+
+            <div class="emoji-view" *ngIf="emojiView">
+                <emoji-mart title="Pick your emoji…"  set="emojione" (emojiSelect)="addEmoji($event)" emoji="point_up"></emoji-mart> 
+            </div>
+        </div>
+    </div>
+    {{ setMessageView(messagesContainer) }}
+</div>
+
 <button class="btn-lg btn btn-danger" (click)="showRequest()" >Reject Request</button>
+
 

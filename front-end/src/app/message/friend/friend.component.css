@@ -5,6 +5,20 @@
     border-radius: 5px;
     box-shadow: 2px 2px 5px black;
 }
+
+@media (max-width:350px){
+    .users{
+        background-color: #000;
+    text-align: center;
+    margin: unset;
+    border-radius: 0;
+    box-shadow: none;
+    }
+    .users .head{
+        color: #ffffff;
+    }
+}
+
 .users .head{
     padding: 15px;
     border-bottom: 2px solid #a9a9a9;
@@ -33,22 +47,28 @@
 }
 .user-continer .user-data .over-ele{
     position: absolute;
+    width: 100%;
 }
 .user-continer .user-data .profile{
     display: inline-block;
     border-radius: 50%;
     width: 70px;
     object-fit: cover;
+    min-height: 71px;
+    float: left;
 }
 .user-continer .user-data .name{
-    display: inline-block;
-    width: 190px;
-    padding-left: 20px;
+    display: flex;
+    margin-top: 22px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #050e44e3;
+    float: left;
+    margin-left: 10px;
+    width: 45%;
 }
+
 .no-requests{
     background-color: #cf241040;
     color: #bc1010;

@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PickerModule } from '@ctrl/ngx-emoji-mart'
 
 import { NewMessageComponent } from './new-message/new-message.component';
 import { RequestComponent } from './request/request.component';
 import { FriendComponent } from './friend/friend.component';
-import { MessageRoutingModule } from './message-routing.module';
 import { ChatComponent } from './chat/chat.component';
+
+import { MessageRoutingModule } from './message-routing.module';
 
 import { RequestService } from './request.service';
 import { RoomsService } from './rooms.service';
+import { MessageService } from './message.service';
+import { TimePipe } from './time.pipe';
 
 
 @NgModule({
@@ -18,17 +22,20 @@ import { RoomsService } from './rooms.service';
     NewMessageComponent,
     RequestComponent,
     FriendComponent,
-    ChatComponent
+    ChatComponent,
+    TimePipe
   ],
   imports: [
     CommonModule ,
-    MessageRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    MessageRoutingModule ,
+    FormsModule ,
+    HttpClientModule ,
+    PickerModule
   ],
   providers: [
     RequestService ,
-    RoomsService
+    RoomsService ,
+    MessageService
   ]
 })
 export class MessageModule { }
