@@ -10,8 +10,7 @@ const messageSchema = mongoose.Schema({
         ref : 'User'
     },
     room : {
-        type : mongoose.Types.ObjectId,
-        ref : 'Room'
+        type : String
     },
     date : {
         type : Date ,
