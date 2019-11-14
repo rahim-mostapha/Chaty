@@ -47,6 +47,7 @@
     border-radius: 50%;
     width: 70px;
     object-fit: cover;
+    height: 70px;
 }
 .user-continer .user-data .name{
     display: inline-block;
