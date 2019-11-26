@@ -47,6 +47,9 @@ export class ChatComponent implements OnInit {
   sendMessage(){
     let data = {message : this.messageContent , sender : this.userInfo['_id'] , room : this.roomInfo['name']};
     if(this.messageType !== 'text'){
+      if(this.messageType === 'audio'){
+        this.fileExtension = 'wav';
+      }
       data['extension'] = this.fileExtension;
       data['message'] = this.fileContainer;
       data['type'] = this.messageType;

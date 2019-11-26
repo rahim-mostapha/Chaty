@@ -14,7 +14,6 @@ import { MessageRoutingModule } from './message-routing.module';
 import { RequestService } from './request.service';
 import { RoomsService } from './rooms.service';
 import { MessageService } from './message.service';
-import { TimePipe } from './time.pipe';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { TimePipe } from './time.pipe';
     NewMessageComponent,
     RequestComponent,
     FriendComponent,
-    ChatComponent,
-    TimePipe
+    ChatComponent
   ],
   imports: [
     CommonModule ,
