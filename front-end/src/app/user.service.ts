@@ -13,7 +13,7 @@ export class UserService {
 
   loginOrSignupOrUpdateUser(data : Object, path : string) : Observable<Object>{
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/user/${path}` , data , {
+    return this.http.post<Object>(`user/${path}` , data , {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -23,7 +23,7 @@ export class UserService {
 
   getUserData() : Observable<Object>{
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/user/info`, {
+    return this.http.get<Object>(`user/info`, {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -33,7 +33,7 @@ export class UserService {
   
   uploadFile(data) : Observable<Object>{
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/user/uploadFile`, data , {
+    return this.http.post<Object>(`user/uploadFile`, data , {
       reportProgress : true ,
       observe : 'events',
       headers : new HttpHeaders({
@@ -44,7 +44,7 @@ export class UserService {
   
   searchForUser(name: string) : Observable<Object>{
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/user/search/${name}`, {
+    return this.http.get<Object>(`user/search/${name}`, {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`

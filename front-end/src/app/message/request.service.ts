@@ -13,7 +13,7 @@ export class RequestService {
 
   makeNewRequest(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/request/new` , {_id} , {
+    return this.http.post<Object>(`request/new` , {_id} , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -23,7 +23,7 @@ export class RequestService {
 
   getAllRequests() : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/request/all`, {
+    return this.http.get<Object>(`request/all`, {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -33,7 +33,7 @@ export class RequestService {
 
   haveRequest(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/request/find/${_id}` , {
+    return this.http.get<Object>(`request/find/${_id}` , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -42,7 +42,7 @@ export class RequestService {
   }
   rejectRequest(data) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/request/reject/` , data , {
+    return this.http.post<Object>(`request/reject/` , data , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -51,7 +51,7 @@ export class RequestService {
   }
   acceptRequest(data) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/request/accept/` , data , {
+    return this.http.post<Object>(`request/accept/` , data , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -60,7 +60,7 @@ export class RequestService {
   }
   deleteRequest(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.delete<Object>(`http://localhost:3000/request/delete/${_id}` , {
+    return this.http.delete<Object>(`request/delete/${_id}` , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`

@@ -4,7 +4,7 @@
     <div class="col-xs-12 userInfo-continer">
         <div class="userInfo-data">
             <div class="cover"  (mouseenter)="togglecoverOption()" (mouseleave)="togglecoverOption()">
-                <img [src]="'http://localhost:3000/images/'+userInfo.cover" alt="{{userInfo.firstname}} cover" title="{{userInfo.firstname}} cover">
+                <img [src]="'images/'+userInfo.cover" alt="{{userInfo.firstname}} cover" title="{{userInfo.firstname}} cover">
                 <div class="controll" *ngIf="cover">
                     <input type="file" (change)="coverChange($event)" id="coverImage">
                     <button class="btn btn-success" *ngIf="data?.has('cover')" (click)="uploadFile()">Upload</button>
@@ -13,7 +13,7 @@
             </div>
             <div class="over-ele">
                 <div class="profile col-xs-12 col-sm-4 col-md-3" (mouseenter)="toggleProfileOption()" (mouseleave)="toggleProfileOption()">
-                    <img [src]="'http://localhost:3000/images/'+userInfo.profile" alt="{{userInfo.firstname}} profile"  title="{{userInfo.firstname}} profile">
+                    <img [src]="'images/'+userInfo.profile" alt="{{userInfo.firstname}} profile"  title="{{userInfo.firstname}} profile">
                     <div class="controll" *ngIf="profile">
                         <input type="file" (change)="profileChange($event)" id="profileImage">
                         <button class="btn btn-success" *ngIf="data?.has('profile')" (click)="uploadFile()">Upload</button>

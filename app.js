@@ -37,6 +37,11 @@ DB.once('open' , () => {
     // set room controller
     app.use('/room' , require('./controller/room.controller'));
 
+    // view all
+    app.get('*' , (req , res) => {
+        res.sendFile(path.join(__dirname , 'public/index.html'));
+    });
+
     let server = app.listen(port , (error) => {
         if(error) console.error(`app listen error : ${error}`);
         else console.log(`check --> http://localhost:${port}`);

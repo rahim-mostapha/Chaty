@@ -12,7 +12,7 @@ export class RoomsService {
 
   makeNewRoom(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.post<Object>(`http://localhost:3000/room/new` , {_id} , {
+    return this.http.post<Object>(`room/new` , {_id} , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -22,7 +22,7 @@ export class RoomsService {
 
   getAllRooms() : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/room/all`, {
+    return this.http.get<Object>(`room/all`, {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -32,7 +32,7 @@ export class RoomsService {
 
   haveRoom(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.get<Object>(`http://localhost:3000/room/find/${_id}` , {
+    return this.http.get<Object>(`room/find/${_id}` , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
@@ -41,7 +41,7 @@ export class RoomsService {
   }
   deleteRoom(_id) : Observable<Object> {
     let token = this.jwt.getToken();
-    return this.http.delete<Object>(`http://localhost:3000/room/delete/${_id}` , {
+    return this.http.delete<Object>(`room/delete/${_id}` , {
       headers :new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization' : `Bearer ${token}`
