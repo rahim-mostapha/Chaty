@@ -14,7 +14,7 @@ export class MessageService {
   private socket;   
 
   constructor(private http : HttpClient , private jwt : JwtService) { 
-    this.socket = io(this.url+'chat');
+    this.socket = io('/chat');
   }
 
   joinRoom(room : string) {

@@ -32641,7 +32641,7 @@ let MessageService = class MessageService {
         this.http = http;
         this.jwt = jwt;
         this.url = '';
-        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2__(this.url + 'chat');
+        this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2__('/chat');
     }
     joinRoom(room) {
         this.socket.emit('join', { room });

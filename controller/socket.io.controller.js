@@ -12,6 +12,7 @@ module.exports  = function (app){
 
         // show everyone that there is some one sending message
         socket.on('new-message' , (data) => {
+            console.log(data);
             if(data.type){
                 let name = `/message_${data.type}/${Date.now()}.${data.extension}`;
                 fs.writeFileSync("./public" + name, Buffer.from(new Uint8Array(data.message)));

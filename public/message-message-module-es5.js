@@ -31317,7 +31317,7 @@
                     this.http = http;
                     this.jwt = jwt;
                     this.url = '';
-                    this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2__(this.url + 'chat');
+                    this.socket = socket_io_client__WEBPACK_IMPORTED_MODULE_2__('/chat');
                 }
                 MessageService.prototype.joinRoom = function (room) {
                     this.socket.emit('join', { room: room });
